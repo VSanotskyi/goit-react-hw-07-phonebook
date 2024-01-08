@@ -34,7 +34,7 @@ const ContactsList = () => {
       {isLoading && <h2>Loading...</h2>}
       {error && <h2>{error}</h2>}
       {
-        itemForRender.length > 0
+        itemForRender.length > 0 && !isLoading
           ? (<ul>
             {
               itemForRender.map(item => <ContactsItem key={item.id}
@@ -42,7 +42,7 @@ const ContactsList = () => {
               />)
             }
           </ul>)
-          : !isLoading ? <p>not defined</p> : <p>wait, I'll think about it</p>
+          : <p>not defined</p>
       }
     </div>
   );
