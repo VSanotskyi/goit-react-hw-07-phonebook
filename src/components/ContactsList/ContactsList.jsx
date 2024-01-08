@@ -42,7 +42,7 @@ const ContactsList = () => {
               />)
             }
           </ul>)
-          : <p>not defined</p>
+          : !isLoading ? <p>not defined</p> : <p>wait, I'll think about it</p>
       }
     </div>
   );
