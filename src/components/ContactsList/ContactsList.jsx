@@ -34,15 +34,15 @@ const ContactsList = () => {
       {isLoading && <h2>Loading...</h2>}
       {error && <h2>{error}</h2>}
       {
-        itemForRender.length > 0 && (
-          <ul>
+        itemForRender.length > 0
+          ? (<ul>
             {
               itemForRender.map(item => <ContactsItem key={item.id}
                                                       item={item}
               />)
             }
-          </ul>
-        )
+          </ul>)
+          : <p>not defined</p>
       }
     </div>
   );
