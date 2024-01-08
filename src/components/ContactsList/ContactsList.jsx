@@ -30,19 +30,24 @@ const ContactsList = () => {
   return (
     <div>
       <ContactsFormAdd />
-      <ContactsFormSearch />
       {isLoading && <h2>Loading...</h2>}
       {error && <h2>{error}</h2>}
       {
-        itemForRender.length > 0 && !isLoading
-          ? (<ul>
-            {
-              itemForRender.map(item => <ContactsItem key={item.id}
-                                                      item={item}
-              />)
-            }
-          </ul>)
-          : <p>not defined</p>
+        items.length > 0 ?
+          <div>
+            <ContactsFormSearch />
+            {itemForRender.length > 0
+              ? (
+                <ul>
+                  {
+                    itemForRender.map(item => <ContactsItem key={item.id}
+                                                            item={item}
+                    />)
+                  }
+                </ul>
+              )
+              : <p>not defined</p>}
+          </div> : !isLoading ? <p>no contacts</p> : <></>
       }
     </div>
   );
