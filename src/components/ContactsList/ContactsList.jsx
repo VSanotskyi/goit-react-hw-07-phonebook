@@ -21,15 +21,11 @@ const ContactsList = () => {
   const filter = useSelector(getContactsFilterSate);
   const dispatch = useDispatch();
 
-  console.log(filter);
-
   useEffect(() => {
     dispatch(fetchAllContactsThunk());
   }, [dispatch]);
 
   const itemForRender = filterContacts(items, filter);
-
-  console.log(itemForRender);
 
   return (
     <div>
