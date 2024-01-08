@@ -1,6 +1,10 @@
+import { ContactsList } from './ContactsList/ContactsList';
+
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <ContactsList />
+    </div>
   );
 };
 

@@ -1,0 +1,55 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { ContactsItem } from '../ContactsItem/ContactsItem';
+import { fetchAllContactsThunk } from '../../store/contactsSlice/operations';
+import {
+  getContactsFilterSate,
+  getContactsState,
+} from '../../store/contactsSlice/selectors';
+import { ContactsFormAdd } from '../ContactsFormAdd/ContactsFormAdd';
+import { ContactsFormSearch } from '../ContactsFormSearch/ContactsFormSearch';
+
+const filterContacts = (items, filter) => {
+  return filter && items.length > 0
+    ? items.filter(el => el.name.toLowerCase().includes(filter.toLowerCase()))
+    : items;
+};
+
+const ContactsList = () => {
+  const { items, isLoading, error } = useSelector(getContactsState);
+  const filter = useSelector(getContactsFilterSate);
+  const dispatch = useDispatch();
+
+  console.log(filter);
+
+  useEffect(() => {
+    dispatch(fetchAllContactsThunk());
+  }, [dispatch]);
+
+  const itemForRender = filterContacts(items, filter);
+
+  console.log(itemForRender);
+
+  return (
+    <div>
+      <ContactsFormAdd />
+      <ContactsFormSearch />
+      {isLoading && <h2>Loading...</h2>}
+      {error && <h2>{error}</h2>}
+      {
+        itemForRender.length > 0 && (
+          <ul>
+            {
+              itemForRender.map(item => <ContactsItem key={item.id}
+                                                      item={item}
+              />)
+            }
+          </ul>
+        )
+      }
+    </div>
+  );
+};
+
+export { ContactsList };
