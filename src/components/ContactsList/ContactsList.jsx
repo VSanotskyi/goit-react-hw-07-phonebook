@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ContactsItem } from '../ContactsItem';
-import { ContactsFormAdd } from '../ContactsFormAdd';
-import { ContactsFormSearch } from '../ContactsFormSearch';
+import { ContactsItem } from 'components/ContactsItem';
+import { ContactsFormAdd } from 'components/ContactsFormAdd';
+import { ContactsFormSearch } from 'components/ContactsFormSearch';
 
 import {
   fetchAllContactsThunk,
   selectorContacts,
   selectorContactsFilter,
-} from '../../store/contactsSlice';
+} from 'store/contactsSlice';
 
 
 const filterContacts = (items, filter) => {

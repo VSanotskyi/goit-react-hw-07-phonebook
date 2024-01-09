@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import {
-  fetchAllContactsThunk
-  , fetchAddContactThunk,
+  fetchAllContactsThunk,
+  fetchAddContactThunk,
   fetchDelContactThunk,
-} from './';
+} from 'store/contactsSlice';
 
 const handlePending = (state) => {
   state.contacts.isLoading = true;

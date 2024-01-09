@@ -1,1 +1,3 @@
-export * as contactsApi from './contactsApi';
+export {
+  axiosAllContacts, axiosAddContact, axiosDelContact,
+} from './contactsApi';

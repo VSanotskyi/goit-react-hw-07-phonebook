@@ -1,11 +1,13 @@
-export { contactsReducer, setFilterAction } from './contactsSlice';
+export {
+  contactsReducer, setFilterAction,
+} from 'store/contactsSlice/contactsSlice';
 export {
   selectorContacts,
   selectorContactsFilter,
-} from './selectors';
+} from 'store/contactsSlice/selectors';
 export {
   fetchAllContactsThunk,
   fetchAddContactThunk,
   fetchDelContactThunk,
-} from './operations';
+} from 'store/contactsSlice/operations';
 
