@@ -4,6 +4,7 @@ export {
 export {
   selectorContacts,
   selectorContactsFilter,
+  selectVisibleContacts,
 } from 'store/contactsSlice/selectors';
 export {
   fetchAllContactsThunk,
