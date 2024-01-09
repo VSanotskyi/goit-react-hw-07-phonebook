@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ContactsItem } from '../ContactsItem/ContactsItem';
-import { ContactsFormAdd } from '../ContactsFormAdd/ContactsFormAdd';
-import { ContactsFormSearch } from '../ContactsFormSearch/ContactsFormSearch';
-import { operations } from '../../store/contactsSlice';
-import { selectors } from '../../store/contactsSlice';
+import { ContactsItem } from '../ContactsItem';
+import { ContactsFormAdd } from '../ContactsFormAdd';
+import { ContactsFormSearch } from '../ContactsFormSearch';
+
+import { fetchAllContactsThunk } from '../../store/contactsSlice';
+import {
+  selectorContacts,
+  selectorContactsFilter,
+} from '../../store/contactsSlice';
 
 
 const filterContacts = (items, filter) => {
@@ -15,12 +19,12 @@ const filterContacts = (items, filter) => {
 };
 
 const ContactsList = () => {
-  const { items, isLoading, error } = useSelector(selectors.selectorContacts);
-  const filter = useSelector(selectors.selectorContactsFilter);
+  const { items, isLoading, error } = useSelector(selectorContacts);
+  const filter = useSelector(selectorContactsFilter);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(operations.fetchAllContactsThunk());
+    dispatch(fetchAllContactsThunk());
   }, [dispatch]);
 
   const itemForRender = filterContacts(items, filter);

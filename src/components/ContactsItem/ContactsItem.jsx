@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 
-import { operations } from '../../store/contactsSlice';
+import { fetchDelContactThunk } from '../../store/contactsSlice';
 
 const ContactsItem = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(operations.fetchDelContactThunk(item.id));
+    dispatch(fetchDelContactThunk(item.id));
   };
 
   return (

@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux';
 
-import { contactsSlice } from '../../store/contactsSlice';
+import { setFilterAction } from '../../store/contactsSlice';
 
 const ContactsFormSearch = () => {
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { value } }) => {
-    dispatch(contactsSlice.setFilterAction(value));
+    dispatch(setFilterAction(value));
   };
 
   return (

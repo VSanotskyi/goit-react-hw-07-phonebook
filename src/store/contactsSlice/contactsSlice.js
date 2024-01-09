@@ -1,6 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { operations } from './';
+import {
+  fetchAllContactsThunk
+  , fetchAddContactThunk,
+  fetchDelContactThunk,
+} from './';
 
 const handlePending = (state) => {
   state.contacts.isLoading = true;
@@ -33,30 +37,30 @@ const contactsSlice = createSlice({
   extraReducers: builder => {
     builder
       // pending
-      .addCase(operations.fetchAllContactsThunk.pending, handlePending)
-      .addCase(operations.fetchAddContactThunk.pending, handlePending)
-      .addCase(operations.fetchDelContactThunk.pending, handlePending)
+      .addCase(fetchAllContactsThunk.pending, handlePending)
+      .addCase(fetchAddContactThunk.pending, handlePending)
+      .addCase(fetchDelContactThunk.pending, handlePending)
       // rejected
-      .addCase(operations.fetchAllContactsThunk.rejected, handleRejected)
-      .addCase(operations.fetchAddContactThunk.rejected, handleRejected)
-      .addCase(operations.fetchDelContactThunk.rejected, handleRejected)
+      .addCase(fetchAllContactsThunk.rejected, handleRejected)
+      .addCase(fetchAddContactThunk.rejected, handleRejected)
+      .addCase(fetchDelContactThunk.rejected, handleRejected)
       // fulfilled
       // all
-      .addCase(operations.fetchAllContactsThunk.fulfilled,
+      .addCase(fetchAllContactsThunk.fulfilled,
         (state, { payload }) => {
           state.contacts.isLoading = false;
           state.contacts.error = null;
           state.contacts.items = payload;
         })
       // add
-      .addCase(operations.fetchAddContactThunk.fulfilled,
+      .addCase(fetchAddContactThunk.fulfilled,
         (state, { payload }) => {
           state.contacts.isLoading = false;
           state.contacts.error = null;
           state.contacts.items.push(payload);
         })
       // del
-      .addCase(operations.fetchDelContactThunk.fulfilled,
+      .addCase(fetchDelContactThunk.fulfilled,
         (state, { payload }) => {
           state.contacts.isLoading = false;
           state.contacts.error = null;

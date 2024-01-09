@@ -1,4 +1,4 @@
-import { ContactsList } from './ContactsList/ContactsList';
+import { ContactsList } from './ContactsList';
 
 const App = () => {
   return (

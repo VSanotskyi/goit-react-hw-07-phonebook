@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { operations } from '../../store/contactsSlice';
-import { selectors } from '../../store/contactsSlice';
+import { fetchAddContactThunk } from '../../store/contactsSlice';
+import { selectorContacts } from '../../store/contactsSlice';
 
 const checkContact = (contacts, contact) => {
   return contacts.find(
@@ -16,7 +16,7 @@ const initState = {
 
 const ContactsFormAdd = () => {
   const [contact, setContact] = useState(initState);
-  const { items } = useSelector(selectors.selectorContacts);
+  const { items } = useSelector(selectorContacts);
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { value, name } }) => {
@@ -35,7 +35,7 @@ const ContactsFormAdd = () => {
       return;
     }
 
-    dispatch(operations.fetchAddContactThunk(contact));
+    dispatch(fetchAddContactThunk(contact));
     setContact(initState);
   };
 
