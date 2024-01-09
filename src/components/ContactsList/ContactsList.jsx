@@ -5,8 +5,8 @@ import { ContactsItem } from '../ContactsItem';
 import { ContactsFormAdd } from '../ContactsFormAdd';
 import { ContactsFormSearch } from '../ContactsFormSearch';
 
-import { fetchAllContactsThunk } from '../../store/contactsSlice';
 import {
+  fetchAllContactsThunk,
   selectorContacts,
   selectorContactsFilter,
 } from '../../store/contactsSlice';

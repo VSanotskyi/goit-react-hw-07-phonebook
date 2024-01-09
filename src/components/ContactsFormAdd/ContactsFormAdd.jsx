@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchAddContactThunk } from '../../store/contactsSlice';
-import { selectorContacts } from '../../store/contactsSlice';
+import {
+  fetchAddContactThunk,
+  selectorContacts,
+} from '../../store/contactsSlice';
 
 const checkContact = (contacts, contact) => {
   return contacts.find(
