@@ -37,7 +37,9 @@ const ContactsList = () => {
       {
         items.length > 0 ?
           <div>
+            <h3>Find contact</h3>
             <ContactsFormSearch />
+            <h2>Contacts</h2>
             {itemForRender.length > 0
               ? (
                 <ul>
